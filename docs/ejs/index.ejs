@@ -1,0 +1,169 @@
+<section class="introduce">
+    <div class="banner">
+        <%- include(data.getAssetPath('logo.svg')) %>
+        <h1>SEIRYU</h1>
+        <h2>Just <span class="accent">elegant</span> backend</h2>
+    </div>
+    <div class="main-column">
+        <div class="block">
+            <h2>Typesafe</h2>
+            <div class="icon">
+                <%- include(data.getAssetPath('icons/shield.svg')) %>
+            </div>
+            <p class="desc">
+                TypeScript-powered with many additional type safe features included to avoid all those unspecified exceptions with almost zero cost
+            </p>
+        </div>
+
+        <div class="block">
+            <h2>UI</h2>
+            <div class="icon">
+                <%- include(data.getAssetPath('icons/window.svg')) %>
+            </div>
+            <p class="desc">
+                Seiryu provide web UI for helping at developing, debugging and working with applications in all stages of project regardless of used libraries
+            </p>
+        </div>
+
+        <div class="block">
+            <h2>Elegant</h2>
+            <div class="icon">
+                <%- include(data.getAssetPath('icons/heart.svg')) %>
+            </div>
+            <p class="desc">
+                Your application can be written in any way and use all kind of libraries, but with Seiryu it's easier to maintain readable files and directories structure
+            </p>
+        </div>
+
+        <div class="block">
+            <h2>Cost meter</h2>
+            <div class="icon">
+                <%- include(data.getAssetPath('icons/timer.svg')) %>
+            </div>
+            <p class="desc">
+                It's easy to keep eyes on your call costs to avoid more complex responses, from checking where people need to wait the most
+            </p>
+        </div>
+
+        <div class="block">
+            <h2>Magicless</h2>
+            <div class="icon">
+                <%- include(data.getAssetPath('icons/magic.svg')) %>
+            </div>
+            <p class="desc">
+                This library doesn't contains any magic in itself, only few metaprogramming, well documented tricks. Thanks to that it's easier to keep DRY rule without additional learning
+            </p>
+        </div>
+
+        <div class="block">
+            <h2>Easy</h2>
+            <div class="icon">
+                <%- include(data.getAssetPath('icons/person-open-arms.svg')) %>
+            </div>
+            <p class="desc">
+                Seiryu does't contains any new syntaxes, any config files, any strict rules for directories structure, any strict rules for software  purpose
+            </p>
+        </div>
+    </div>
+</section>
+<section class="nodi">
+    <div class="main-column">
+        <div class="slogan">
+            <h1><span class="accent">Seiryu</span> is part of <span class="accent">Nodi</span> project</h1>
+            <h2>Thanks to using other libraries from this project you can unify your whole codebase</h2>
+        </div>
+        <div class="button">
+            <a href="/">Learn more</a>
+        </div>
+    </div>
+</section>
+<section class="examples">
+    <div class="main-column">
+        <h1>Learn by examples</h1>
+        <article>
+            <div class="desc">
+                <h2>Simplest set-up</h2>
+                <p>
+                    If you just want to start with Seiryu, you have not to write much code nor generate anything trough CLI. All required things for "hello world" applications are:
+                    <ul>
+                        <li>Node.JS</li>
+                        <li>TypeScript</li>
+                        <li>...and Seiryu of course</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="code">
+                <%- this.hl.ts(include('examples/intro/simplest.tsx'), 'main.ts') %>
+            </div>
+        </article>
+
+        <article>
+            <div class="desc">
+                <h2>Additional features</h2>
+                <p>
+                    In most cases such server have more tasks to do, not only HTTP requests. Setting up custom features for server is possible trough getting raw Node's http/https object.
+                </p>
+                <p>
+                    But most common features are already bundled in Seiryu so you don't need to download and bind additional libraries.
+                </p>
+            </div>
+
+            <div class="code">
+                <%- this.hl.ts(include('examples/intro/features.tsx'), 'main.ts') %>
+            </div>
+        </article>
+
+        <article>
+            <div class="desc">
+                <h2>Advanced set-up</h2>
+                <p>
+                    If you need to create enterprise-class or just more readable server you have to use more complex syntaxes. Seiryu will help you at creating MVC by exporting classes to organize yours code.
+                </p>
+                <p>
+                    One of additional requirements for using more complex features is setting-up <a href="/">second building phase</a>. Thanks to that your code will be transformed a little bit before compiling to JavaScript.
+                </p>
+                <p>
+                    Why we use <a href="https://www.typescriptlang.org/docs/handbook/decorators.html">TypeScript's decorators</a> if this experimental feature have such bad reputation in some communities? It's simple, because we don't really use them. Using decorators will make our code more complex after compiling, Seiryu prefers lightweight solutions. And because decorators syntax is so elegant it's used to point out which parts of code will be transformed to more raw but less elegant alternative with keeping old source maps.
+                </p>
+            </div>
+
+            <div class="code">
+                <%- this.hl.ts(include('examples/intro/advanced-1.tsx'), 'main.ts') %>
+                <%- this.hl.ts(include('examples/intro/advanced-2.tsx'), 'router.ts') %>
+                <%- this.hl.ts(include('examples/intro/advanced-3.tsx'), 'controllers/home.ts') %>
+            </div>
+        </article>
+    </div>
+</section>
+<footer>
+    <div class="main-column">
+        <div class="col">
+            <h1>Related projects</h1>
+            <a href="/">Nodi</a>
+            <a href="/">Nodi's Core</a>
+            <a href="/">Byakko</a>
+            <a href="/">Bunbun</a>
+            <a href="/">HCUI</a>
+            <a href="/">Types exporter</a>
+        </div>
+        <div class="col">
+            <h1>Site map</h1>
+            <a href="/">Home</a>
+            <a href="/">Philosophy</a>
+            <a href="/">Docs</a>
+            <a href="/">Changelog</a>
+            <a href="/">Sponsorship</a>
+        </div>
+        <div class="col">
+            <h1>Useful links</h1>
+            <a href="/">NPM package</a>
+            <a href="/">Project GitHub repository</a>
+        </div>
+        <div class="logo">
+            <%- include(data.getAssetPath('logo-simple.svg')) %>
+            <div>Created with <span class="heart">❤</span> by Maciej (Maxie) Mieńko</div>
+            <div>Project is licenced under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache-2.0</a></div>
+        </div>
+    </div>
+</footer>

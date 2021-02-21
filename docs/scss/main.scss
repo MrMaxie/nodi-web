@@ -1,0 +1,332 @@
+@mixin for-mobile {
+    @media (max-width: 901px) { @content; }
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 1px 1px 1px rgba(black, 0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+
+    background-color: $color-bg-1;
+    color: $color-font-1;
+    margin: 0;
+    min-height: 100vh;
+    font-size: 12px;
+}
+
+select {
+    padding: 10px 15px;
+    color: currentColor;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: $color-bg-1;
+    appearance: none;
+    font-size: 14px;
+    transition: box-shadow .3s;
+
+    &:hover, &:focus {
+        box-shadow: 0 0 0 2px $color-accent;
+        cursor: pointer;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: $color-bg-1;
+
+    &::-webkit-scrollbar {
+        width: 11px;
+        height: 11px;
+        background: $color-bg-2;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $color-bg-2;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-bg-1;
+        border-radius: 6px;
+        border: 3px solid $color-bg-2;
+    }
+}
+
+.main-column {
+    max-width: 1300px;
+    width: 100vw;
+    margin: auto;
+
+    @include for-mobile {
+        max-width: 100vw;
+    }
+}
+
+@keyframes bg-scrolling-reverse {
+    100% { background-position: (40px * 3) (59.428px * 3); }
+}
+
+section.nodi {
+    height: 100px;
+    max-height: none !important;
+    min-height: 0 !important;
+    background-color: $color-bg-2;
+    background: url("/assets/pattern.svg") repeat 0 0;
+    background-size: (40px * 3) (59.428px * 3);
+    animation: bg-scrolling-reverse 5s infinite linear;
+
+    @include for-mobile {
+        height: auto;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .main-column {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        @include for-mobile {
+            flex-direction: column;
+        }
+    }
+
+    .slogan {
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+
+        h1, h2 {
+            flex: 1;
+            display: block;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: 200;
+        }
+
+        h2 {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: $color-font-2;
+        }
+    }
+
+    .button a {
+        padding: 10px 15px;
+        display: block;
+        border-radius: 5px;
+        color: currentColor;
+        border: none;
+        outline: none;
+        background-color: $color-bg-1;
+        appearance: none;
+        font-size: 16px;
+        transition: box-shadow .3s;
+        text-decoration: none;
+
+        &:hover, &:focus {
+            box-shadow: 0 0 0 2px $color-accent;
+            cursor: pointer;
+        }
+    }
+
+    .accent {
+        color: $color-accent;
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $color-bg-2;
+    z-index: 500;
+
+    @include for-mobile {
+        position: static;
+    }
+
+    .nav {
+        height: 60px;
+
+        @include for-mobile {
+            height: auto;
+        }
+
+        .inner {
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            @include for-mobile {
+                height: auto;
+                flex-wrap: wrap;
+            }
+        }
+
+        .title {
+            flex: 1;
+            font-size: 25px;
+            font-weight: 300;
+            line-height: 60px;
+
+            @include for-mobile {
+                width: 100vw;
+                flex: none;
+                text-align: center;
+            }
+
+            a {
+                font-size: 16px;
+                font-weight: inherit;
+                cursor: pointer;
+                color: $color-font-1;
+
+                &:hover {
+                    color: $color-accent;
+                }
+            }
+        }
+
+        .version, a {
+            border: 0;
+            background: none;
+            outline: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color .3s;
+            text-decoration: none;
+        }
+
+        .version {
+            padding-left: 20px;
+
+            select {
+                margin-left: 10px;
+            }
+
+            @include for-mobile {
+                margin: 10px 15px;
+            }
+        }
+
+        .inner > a {
+            cursor: pointer;
+            padding: 0 20px;
+            transition: color .3s;
+            text-decoration: none;
+            color: $color-font-2;
+
+            &:hover {
+                color: $color-font-1;
+            }
+
+            &[data-active="true"] {
+                cursor: default;
+                color: $color-accent;
+            }
+
+            @include for-mobile {
+                padding: 10px 15px;
+                color: currentColor;
+                font-family: 'Open Sans', sans-serif;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                background-color: $color-bg-1;
+                appearance: none;
+                font-size: 14px;
+                transition: box-shadow .3s;
+                margin: 10px 15px;
+
+                &:hover, &:focus {
+                    box-shadow: 0 0 0 2px $color-accent;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: $color-bg-2;
+
+    .main-column {
+        display: flex;
+        flex-direction: row;
+
+        @include for-mobile {
+            flex-direction: column;
+        }
+    }
+
+    .col {
+        flex: 1;
+        border-right: 1px solid $color-bg-1;
+        margin: 40px 0;
+        padding: 0 20px;
+
+        @include for-mobile {
+            border: none;
+            margin-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid $color-bg-1;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        a {
+            font-size: 16px;
+            color: $color-font-2;
+            transition: color .3s;
+            cursor: pointer;
+            display: block;
+            padding: 0 15px;
+            padding-top: 8px;
+
+            &:hover {
+                color: $color-accent;
+            }
+        }
+    }
+
+    .logo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 12px;
+        color: $color-font-2;
+
+        svg {
+            margin-bottom: 15px;
+        }
+
+        .heart, a {
+            color: $color-accent;
+        }
+
+        @include for-mobile {
+            padding-bottom: 40px;
+        }
+    }
+}
