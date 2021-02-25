@@ -2,6 +2,7 @@ import Bunbun from 'bunbun';
 import Fs from 'fs';
 import Path from 'path';
 import Ejs from 'ejs';
+import Lru from 'lru-cache';
 import Sass from 'node-sass';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-typescript';
@@ -10,6 +11,8 @@ import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
 
 const $ = new Bunbun();
+
+Ejs.cache = new Lru(150);
 
 const context = {
     url: (name?: string) => `https://${name ? `${name}.` : ''}nodi.dev/`,
@@ -22,10 +25,8 @@ const context = {
     },
 };
 
-Ejs.resolveInclude = (_: string, path: string) => Fs.readFileSync(`${__dirname}/src/${path}`, 'utf-8');
-
 $.task('build', async () => {
-    const files = await $.fs.list('./src/**/*.(ejs|scss)');
+    const files = await $.fs.list('./src/**/*.*');
 
     for (const file of files) {
         const ext = Path.extname(file);
@@ -40,9 +41,9 @@ $.task('build', async () => {
         switch (ext) {
             case '.ejs':
                 const ejs = await $.fs.read(file);
-                const html = await Ejs.render(ejs, {}, {
-                    async: true,
+                const html = Ejs.render(ejs, {}, {
                     context,
+                    root: `${__dirname}/src`,
                 });
                 resultFile = file
                     .replace('\\', '/')
@@ -64,6 +65,13 @@ $.task('build', async () => {
                 await $.fs.createDir(Path.dirname(resultFile));
                 await $.fs.write(resultFile, scss.css);
                 break;
+
+            default:
+                resultFile = file
+                    .replace('\\', '/')
+                    .replace('/src/', '/build/');
+                await $.fs.copy(file, resultFile);
+                break;
         }
 
 
@@ -71,11 +79,11 @@ $.task('build', async () => {
 });
 
 $.task('watch', async () => {
-    const server = $.serve('./build', 80);
+    const server = $.serve('./build/seiryu', 80);
 
     await $.run('build');
 
-    $.fs.watch(`./docs/**/*.*`, async () => {
+    $.fs.watch(`./src/**/*.*`, async () => {
         await $.run('build');
         server.reload();
     });

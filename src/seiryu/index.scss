@@ -13,8 +13,8 @@ $color-bunbun: #bac964;
 $color-nodi: #fbd46d;
 $color-core: #7e0cf5;
 
-@import "./reset";
-@import "./main";
-@import "./prism";
+@import "./_reset";
+@import "./_main";
+@import "./_prism";
 
-@import "./page-index";
+@import "./_page-index";

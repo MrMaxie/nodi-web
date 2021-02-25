@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('/seiryu/_head', { page: 'index' }) %>
+        <title>Seiryu | Home</title>
+    </head>
+    <body data-page="index">
+        <%- include('/seiryu/_nav') %>
+
+        <section class="introduce">
+            <div class="banner">
+                <%- include('/assets/logo.svg') %>
+                <h1>SEIRYU</h1>
+                <h2>Just <span class="accent">elegant</span> backend</h2>
+            </div>
+            <div class="main-column">
+                <div class="block">
+                    <h2>Typesafe</h2>
+                    <div class="icon">
+                        <%- include('/assets/icons/shield.svg') %>
+                    </div>
+                    <p class="desc">
+                        TypeScript-powered with many additional type safe features included to avoid all those unspecified exceptions with almost zero cost
+                    </p>
+                </div>
+
+                <div class="block">
+                    <h2>UI</h2>
+                    <div class="icon">
+                        <%- include('/assets/icons/window.svg') %>
+                    </div>
+                    <p class="desc">
+                        Seiryu provide web UI for helping at developing, debugging and working with applications in all stages of project regardless of used libraries
+                    </p>
+                </div>
+
+                <div class="block">
+                    <h2>Elegant</h2>
+                    <div class="icon">
+                        <%- include('/assets/icons/heart.svg') %>
+                    </div>
+                    <p class="desc">
+                        Your application can be written in any way and use all kind of libraries, but with Seiryu it's easier to maintain readable files and directories structure
+                    </p>
+                </div>
+
+                <div class="block">
+                    <h2>Cost meter</h2>
+                    <div class="icon">
+                        <%- include('/assets/icons/timer.svg') %>
+                    </div>
+                    <p class="desc">
+                        It's easy to keep eyes on your call costs to avoid more complex responses, from checking where people need to wait the most
+                    </p>
+                </div>
+
+                <div class="block">
+                    <h2>Magicless</h2>
+                    <div class="icon">
+                        <%- include('/assets/icons/magic.svg') %>
+                    </div>
+                    <p class="desc">
+                        This library doesn't contains any magic in itself, only few metaprogramming, well documented tricks. Thanks to that it's easier to keep DRY rule without additional learning
+                    </p>
+                </div>
+
+                <div class="block">
+                    <h2>Easy</h2>
+                    <div class="icon">
+                        <%- include('/assets/icons/person-open-arms.svg') %>
+                    </div>
+                    <p class="desc">
+                        Seiryu does't contains any new syntaxes, any config files, any strict rules for directories structure, any strict rules for software  purpose
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="get-on-npm">
+            <div class="main-column">
+                <h1>Install <span class="accent">Seiryu</span> using one command</h1>
+                <p><code>npm i --save-dev @nodi/seiryu</code></p>
+            </div>
+        </section>
+        <section class="nodi">
+            <div class="main-column">
+                <div class="slogan">
+                    <h1><span class="accent">Seiryu</span> is part of <span class="accent">Nodi</span> project</h1>
+                    <h2>Thanks to using other libraries from this project you can unify your whole codebase</h2>
+                </div>
+                <div class="button">
+                    <a href="/">Learn more</a>
+                </div>
+            </div>
+        </section>
+        <section class="examples">
+            <div class="main-column">
+                <h1>Learn by examples</h1>
+                <article>
+                    <div class="desc">
+                        <h2>Simplest set-up</h2>
+                        <p>
+                            If you just want to start with Seiryu, you have not to write much code nor generate anything trough CLI. All required things for "hello world" applications are:
+                            <ul>
+                                <li>Node.JS</li>
+                                <li>TypeScript</li>
+                                <li>...and Seiryu of course</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="code">
+                        <%- this.code('seiryu/examples/simplest.tsx', 'main.ts') %>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="desc">
+                        <h2>Additional features</h2>
+                        <p>
+                            In most cases such server have more tasks to do, not only HTTP requests. Setting up custom features for server is possible trough getting raw Node's http/https object.
+                        </p>
+                        <p>
+                            But most common features are already bundled in Seiryu so you don't need to download and bind additional libraries.
+                        </p>
+                    </div>
+
+                    <div class="code">
+                        <%- this.code('seiryu/examples/features.tsx', 'main.ts') %>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="desc">
+                        <h2>Advanced set-up</h2>
+                        <p>
+                            If you need to create enterprise-class or just more readable server you have to use more complex syntaxes. Seiryu will help you at creating MVC by exporting classes to organize yours code.
+                        </p>
+                        <p>
+                            One of additional requirements for using more complex features is setting-up <a href="/">second building phase</a>. Thanks to that your code will be transformed a little bit before compiling to JavaScript.
+                        </p>
+                        <p>
+                            Why we use <a href="https://www.typescriptlang.org/docs/handbook/decorators.html">TypeScript's decorators</a> if this experimental feature have such bad reputation in some communities? It's simple, because we don't really use them. Using decorators will make our code more complex after compiling, Seiryu prefers lightweight solutions. And because decorators syntax is so elegant it's used to point out which parts of code will be transformed to more raw but less elegant alternative with keeping old source maps.
+                        </p>
+                    </div>
+
+                    <div class="code">
+                        <%- this.code('seiryu/examples/advanced-1.tsx', 'main.ts') %>
+                        <%- this.code('seiryu/examples/advanced-2.tsx', 'router.ts') %>
+                        <%- this.code('seiryu/examples/advanced-3.tsx', 'controllers/home.ts') %>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <%- include('/seiryu/_footer') %>
+    </body>
+</html>
