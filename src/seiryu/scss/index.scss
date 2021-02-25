@@ -1,0 +1,20 @@
+$color-bg-1: #2b2b2b;
+$color-bg-2: #1b1b1b;
+$color-bg-3: #232323;
+$color-font-1: #eee;
+$color-font-2: #bbb;
+$color-accent: #E55381;
+
+$color-seiryu: #E55381;
+$color-hcui: #ffd369;
+$color-byakko: #f05454;
+$color-types: #3282b8;
+$color-bunbun: #bac964;
+$color-nodi: #fbd46d;
+$color-core: #7e0cf5;
+
+@import "./reset";
+@import "./main";
+@import "./prism";
+
+@import "./page-index";

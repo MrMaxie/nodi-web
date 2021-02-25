@@ -1,33 +1,35 @@
 {
-  "name": "@nodi/seiryu",
+  "name": "nodi-web",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "devDependencies": {
-    "@types/ejs": "3.0.6",
-    "@types/json5": "2.2.0",
+  "private": true,
+  "dependencies": {
     "@types/node-sass": "4.11.1",
     "@types/semver": "7.3.4",
     "bunbun": "3.0.3",
-    "ejs": "3.1.6",
-    "json5": "2.2.0",
     "node-sass": "5.0.0",
-    "prismjs": "^1.23.0",
-    "semver": "7.3.4",
-    "typescript": "4.1.5"
+    "ts-node": "9.1.1",
+    "typescript": "4.2.2"
   },
   "scripts": {
-    "docs:build": "node make \"docs->build\"",
-    "docs:watch": "node make \"docs->build:watch\""
+    "build": "ts-node make build",
+    "watch": "ts-node make watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MrMaxie/Seiryu.git"
+    "url": "git+https://github.com/MrMaxie/nodi-web.git"
   },
   "author": "Maciej (Maxie) Mieńko",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/MrMaxie/Seiryu/issues"
+    "url": "https://github.com/MrMaxie/nodi-web/issues"
   },
-  "homepage": "https://github.com/MrMaxie/Seiryu#readme"
+  "homepage": "https://github.com/MrMaxie/nodi-web#readme",
+  "devDependencies": {
+    "@types/ejs": "3.0.6",
+    "@types/prismjs": "1.16.3",
+    "ejs": "3.1.6",
+    "prismjs": "1.23.0"
+  }
 }

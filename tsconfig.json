@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "module": "None",
+        "module": "CommonJS",
         "moduleResolution": "node",
         "esModuleInterop": true,
         "sourceMap": true,
         "allowSyntheticDefaultImports": true
     },
-    "include": ["src/**/*"],
+    "include": ["./**/*"],
     "exclude": ["node_modules"]
 }
