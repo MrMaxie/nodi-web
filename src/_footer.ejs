@@ -1,0 +1,46 @@
+<footer>
+    <div class="main-column">
+        <div class="col">
+            <h1>Related projects</h1>
+            <% if (this.project !== 'nodi') { %>
+                <a href="<%- this.url() %>">Nodi</a>
+            <% } %>
+            <% if (this.project !== 'seiryu') { %>
+                <a href="<%- this.url('seiryu') %>">Seiryu</a>
+            <% } %>
+            <% if (this.project !== 'core') { %>
+                <a href="<%- this.url('core') %>">Nodi's Core</a>
+            <% } %>
+            <% if (this.project !== 'byakko') { %>
+                <a href="<%- this.url('byakko') %>">Byakko</a>
+            <% } %>
+            <% if (this.project !== 'bunbun') { %>
+                <a href="<%- this.url('bunbun') %>">BunBun</a>
+            <% } %>
+            <% if (this.project !== 'hcui') { %>
+                <a href="<%- this.url('hcui') %>">HCUI - Honeycomb UI</a>
+            <% } %>
+            <% if (this.project !== 'tse') { %>
+                <a href="<%- this.url('tse') %>">TSE - Types Extractor</a>
+            <% } %>
+        </div>
+        <div class="col">
+            <h1>Site map</h1>
+            <a href="<%- this.url(this.projectName) %>" rel="<%- this.page === 'home' ? 'nofollow' : '' %>" >Home</a>
+            <a href="<%- this.url() %>philosophy" rel="<%- this.page === 'philosophy' ? 'nofollow' : '' %>" >Philosophy</a>
+            <a href="<%- this.url(this.projectName) %>docs" rel="<%- this.page === 'docs' ? 'nofollow' : '' %>" >Docs</a>
+            <a href="<%- this.url(this.projectName) %>changelog" rel="<%- this.page === 'changelog' ? 'nofollow' : '' %>" >Changelog</a>
+            <a href="<%- this.url() %>donate" rel="<%- this.page === 'donate' ? 'nofollow' : '' %>" >Donate</a>
+        </div>
+        <div class="col">
+            <h1>Useful links</h1>
+            <a href="https://www.npmjs.com/package/<%- this.moduleName %>">NPM package</a>
+            <a href="https://github.com/MrMaxie/<%- this.moduleName.replace(/[@]/g, '').replace(/[/]/g, '-') %>">Project GitHub repository</a>
+        </div>
+        <div class="logo">
+            <%- include(`/assets/${this.project}.logo.svg`) %>
+            <div>Created with <span class="heart">❤</span> by Maciej (Maxie) Mieńko</div>
+            <div>Project is licenced under <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache-2.0</a></div>
+        </div>
+    </div>
+</footer>

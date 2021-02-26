@@ -1,16 +1,24 @@
+<%
+this.project = 'seiryu';
+this.projectName = 'Seiryu';
+this.moduleName = '@nodi/seiryu';
+this.page = 'home';
+this.pageName = 'Home';
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <%- include('/seiryu/_head', { page: 'index' }) %>
-        <title>Seiryu | Home</title>
+        <%- include('/_head') %>
+        <%- include('/seiryu/_head') %>
+        <title><%- this.projectName %> | <%- this.pageName %></title>
     </head>
     <body data-page="index">
-        <%- include('/seiryu/_nav') %>
+        <%- include('/_nav') %>
 
         <section class="introduce">
             <div class="banner">
-                <%- include('/assets/logo.svg') %>
-                <h1>SEIRYU</h1>
+                <%- include('/assets/seiryu.logo.svg') %>
+                <h1><%- this.projectName %></h1>
                 <h2>Just <span class="accent">elegant</span> backend</h2>
             </div>
             <div class="main-column">
@@ -75,23 +83,8 @@
                 </div>
             </div>
         </section>
-        <section class="get-on-npm">
-            <div class="main-column">
-                <h1>Install <span class="accent">Seiryu</span> using one command</h1>
-                <p><code>npm i --save-dev @nodi/seiryu</code></p>
-            </div>
-        </section>
-        <section class="nodi">
-            <div class="main-column">
-                <div class="slogan">
-                    <h1><span class="accent">Seiryu</span> is part of <span class="accent">Nodi</span> project</h1>
-                    <h2>Thanks to using other libraries from this project you can unify your whole codebase</h2>
-                </div>
-                <div class="button">
-                    <a href="/">Learn more</a>
-                </div>
-            </div>
-        </section>
+        <%- include('/_npm') %>
+        <%- include('/_nodi') %>
         <section class="examples">
             <div class="main-column">
                 <h1>Learn by examples</h1>
@@ -151,6 +144,6 @@
                 </article>
             </div>
         </section>
-        <%- include('/seiryu/_footer') %>
+        <%- include('/_footer') %>
     </body>
 </html>

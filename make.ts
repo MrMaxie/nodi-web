@@ -79,13 +79,10 @@ $.task('build', async () => {
 });
 
 $.task('watch', async () => {
-    const server = $.serve('./build/seiryu', 80);
-
     await $.run('build');
 
     $.fs.watch(`./src/**/*.*`, async () => {
         await $.run('build');
-        server.reload();
     });
 });
 

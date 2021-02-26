@@ -1,0 +1,18 @@
+<header>
+    <div class="nav">
+        <div class="main-column inner">
+            <div class="title"><%- this.projectName %></div>
+            <a href="/" data-active="<%- this.page === 'home' %>">Home</a>
+            <a href="<%- this.url() %>philosophy.html">Philosophy</a>
+            <a href="/docs">Docs</a>
+            <a href="/changelog">Changelog</a>
+            <a href="<%- this.url() %>donate">Donate</a>
+            <label class="version">
+                Version:
+                <select>
+                    <option>Latest (1.0.0)</option>
+                </select>
+            </label>
+        </div>
+    </div>
+</header>
