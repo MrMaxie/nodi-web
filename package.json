@@ -5,16 +5,23 @@
   "main": "index.js",
   "private": true,
   "dependencies": {
+    "@types/ejs": "3.0.6",
+    "@types/lru-cache": "5.1.0",
     "@types/node-sass": "4.11.1",
+    "@types/prismjs": "1.16.3",
     "@types/semver": "7.3.4",
     "bunbun": "3.0.3",
+    "ejs": "3.1.6",
+    "lru-cache": "6.0.0",
     "node-sass": "5.0.0",
+    "prismjs": "1.23.0",
     "ts-node": "9.1.1",
     "typescript": "4.2.2"
   },
   "scripts": {
     "build": "ts-node make build",
-    "watch": "ts-node make watch"
+    "watch": "ts-node make watch",
+    "test": "ts-node speedtest"
   },
   "repository": {
     "type": "git",
@@ -25,13 +32,5 @@
   "bugs": {
     "url": "https://github.com/MrMaxie/nodi-web/issues"
   },
-  "homepage": "https://github.com/MrMaxie/nodi-web#readme",
-  "devDependencies": {
-    "@types/ejs": "3.0.6",
-    "@types/lru-cache": "5.1.0",
-    "@types/prismjs": "1.16.3",
-    "ejs": "3.1.6",
-    "lru-cache": "6.0.0",
-    "prismjs": "1.23.0"
-  }
+  "homepage": "https://github.com/MrMaxie/nodi-web#readme"
 }

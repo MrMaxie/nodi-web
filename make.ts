@@ -32,7 +32,7 @@ $.task('build', async () => {
         const ext = Path.extname(file);
         const basename = Path.basename(file, ext);
 
-        if (basename.startsWith('_')) {
+        if (basename.startsWith('_') || file.includes('/src/assets/')) {
             continue;
         }
 
@@ -57,6 +57,21 @@ $.task('build', async () => {
                 const scss = Sass.renderSync({
                     file,
                     outputStyle: 'compressed',
+                    functions: {
+                        'to-base64($url, $mime: "image/png")': (($url: Sass.types.Value, $mime: Sass.types.Value) => {
+                            if (!($url instanceof Sass.types.String)) {
+                                throw '$url: Expected string.';
+                            }
+
+                            if (!($mime instanceof Sass.types.String)) {
+                                throw '$mime: Expected string.';
+                            }
+
+                            const content = Fs.readFileSync(Path.join(__dirname, 'src', $url.getValue()));
+                            const base64 = Buffer.from(content).toString('base64');
+                            return new Sass.types.String(`data:${$mime.getValue()};base64,${base64}`);
+                        }),
+                    },
                 });
                 resultFile = file
                     .replace('\\', '/')

@@ -193,7 +193,7 @@ section.family {
     min-height: 100vh;
     max-height: none !important;
     background-color: $color-bg-2;
-    background: url("/pattern.svg") repeat 0 0;
+    background: url(#{to-base64('./assets/pattern.svg', 'image/svg+xml')}) repeat 0 0;
     background-size: (40px * 3) (59.428px * 3);
     animation: bg-scrolling-reverse 5s infinite linear;
     padding: 20px 0;
@@ -213,6 +213,14 @@ section.family {
     .item {
         &.seiryu {
             --project-color: #{$color-seiryu};
+        }
+
+        &.byakko {
+            --project-color: #{$color-byakko};
+        }
+
+        &.core {
+            --project-color: #{$color-core};
         }
 
         background-color: rgba(0, 0, 0, .1);
