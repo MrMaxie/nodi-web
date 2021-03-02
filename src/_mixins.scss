@@ -1,0 +1,9 @@
+@mixin for-mobile {
+    @media (max-width: 901px) { @content; }
+}
+
+@mixin set-accent($color) {
+    :root {
+        --color-accent: #{$color};
+    }
+}

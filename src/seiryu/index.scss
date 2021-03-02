@@ -1,7 +1,3 @@
 @import "../_common";
 
-:root {
-    --color-accent: #{$color-seiryu};
-}
-
-@import "./_page-index";
+@include set-accent($color-seiryu);

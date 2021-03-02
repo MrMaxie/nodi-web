@@ -1,0 +1,28 @@
+$color-bg-1: #2b2b2b;
+$color-bg-2: #1b1b1b;
+$color-bg-3: #232323;
+$color-font-1: #eee;
+$color-font-2: #bbb;
+$color-accent: var(--color-accent);
+
+$color-nodi: #fbd46d;
+$color-seiryu: #E55381;
+$color-hcui: #ffd369;
+$color-byakko: #845ec2;
+$color-tse: #3282b8;
+$color-bunbun: #bac964;
+$color-core: #bedcfa;
+
+:root {
+    --color-nodi-1: #{$color-nodi};
+    --color-nodi-2: #b3933c;
+
+    --color-byakko-1: #{$color-byakko};
+    --color-byakko-2: #4f2b8a;
+
+    --color-core-1: #9fb3f8;
+    --color-core-2: #578cc0;
+}
+
+$font-mono: 'Space Mono', Monaco, Consolas, monospace;
+$font-sans-serif: 'Open Sans', sans-serif;

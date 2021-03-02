@@ -1,8 +1,8 @@
 <svg width="250" height="250" version="1.1" viewBox="0 0 264.58 264.58" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <linearGradient id="nodi_logo_a" x1="508.37" x2="508.37" y1="584.49" y2="32.16" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#d3b153" offset="0"/>
-            <stop stop-color="#fbd46d" offset="1"/>
+            <stop stop-color="var(--color-nodi-2)" offset="0"/>
+            <stop stop-color="var(--color-nodi-1)" offset="1"/>
         </linearGradient>
     </defs>
     <path transform="scale(.26458)" d="m508.37 32.16-118.06 323.31-130.37-178.03v400.48h205.95l-27.33-36.018h-144.18v-258.2l106.09 144.89 106.06-290.46 97.549 299.26 102.91-158.63-0.86133 300.35 34.436 0.10937 1.1992-418.21-127.38 196.36zm153.35 509.74 26.072 34.783v-34.783z" fill="url(#nodi_logo_a)" />

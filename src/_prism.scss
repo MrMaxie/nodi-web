@@ -1,30 +1,30 @@
-$fontSize: 15px;
-$textShadow: none;
-$fontFamily: 'Space Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-$lineHeight: 1.5;
-$tabSize: 4;
-$paddingTop: 1em;
+$prism-font-size: 15px;
+$prism-text-shadow: none;
+$prism-font-family: $font-mono;
+$prism-line-height: 1.5;
+$prism-tab-size: 4;
+$prism-padding-top: 1em;
 
-$blockBackground: transparent;
-$baseColor: #b4b4b4;
+$prism-block-background: transparent;
+$prism-base-color: #b4b4b4;
 
-$commentColor: #6b6b6b; //
-$punctuationColor: #6b6b6b; //
-$propertyColor: #ffd369;
-$selectorColor: #6b6b6b;
-$operatorColor: #ffd369;
-$operatorBg: transparent;
-$variableColor: #e90;
-$functionColor: #1f98e9; //
-$keywordColor: #E55381;
-$selectedColor: #b3d4fc;
-$stringColor: #8ccc6f;
+$prism-comment-color: #6b6b6b;
+$prism-punctuation-color: #6b6b6b;
+$prism-property-color: #ffd369;
+$prism-selector-color: #6b6b6b;
+$prism-operator-color: #ffd369;
+$prism-operator-bg: transparent;
+$prism-variable-color: #E90;
+$prism-function-color: #1f98e9;
+$prism-keyword-color: #E55381;
+$prism-selected-color: #B3D4FC;
+$prism-string-color: #8CCC6F;
 
-$inlineCodeColor: #DB4C69;
-$inlineCodeBackground: transparent;
+$prism-inline-code-color: #DB4C69;
+$prism-inline-code-background: transparent;
 
-$highlightBackground: transparent;
-$highlightAccent: #F7D87C;
+$prism-highlight-background: transparent;
+$prism-highlightAccent: #F7D87C;
 
 .codeblock {
     border-radius: 10px;
@@ -48,27 +48,27 @@ $highlightAccent: #F7D87C;
         position: absolute;
         top: 10px;
         right: 20px;
-        font-family: $fontFamily;
+        font-family: $prism-font-family;
         color: #686868;
     }
 }
 
 pre[class*="language-"],
 code[class*="language-"] {
-    color: $baseColor;
-    font-size: $fontSize;
-    text-shadow: $textShadow;
-    font-family: $fontFamily;
+    color: $prism-base-color;
+    font-size: $prism-font-size;
+    text-shadow: $prism-text-shadow;
+    font-family: $prism-font-family;
     direction: ltr;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
-    line-height: $lineHeight;
+    line-height: $prism-line-height;
 
-    -moz-tab-size: $tabSize;
-    -o-tab-size: $tabSize;
-    tab-size: $tabSize;
+    -moz-tab-size: $prism-tab-size;
+    -o-tab-size: $prism-tab-size;
+    tab-size: $prism-tab-size;
 
     -webkit-hyphens: none;
     -moz-hyphens: none;
@@ -78,7 +78,7 @@ code[class*="language-"] {
     &::selection,
     &::mozselection {
         text-shadow: none;
-        background: $selectedColor;
+        background: $prism-selected-color;
     }
 
     @media print {
@@ -87,21 +87,21 @@ code[class*="language-"] {
 
 }
 
-// Blocks
+// -blocks
 pre[class*="language-"] {
-    padding: $paddingTop;
+    padding: $prism-padding-top;
     margin: .5em 0;
     overflow: auto;
 
-    background: $blockBackground;
+    background: $prism-block-background;
 }
 
 // Inline code
 :not(pre) > code[class*="language-"] {
     padding: .1em .3em;
     border-radius: .3em;
-    color: $inlineCodeColor;
-    background: $inlineCodeBackground;
+    color: $prism-inline-code-color;
+    background: $prism-inline-code-background;
 }
 
 /*********************************************************
@@ -116,11 +116,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: $commentColor;
+    color: $prism-comment-color;
 }
 
 .token.punctuation {
-    color: $punctuationColor;
+    color: $prism-punctuation-color;
 }
 
 .token.property,
@@ -130,11 +130,11 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-    color: $propertyColor;
+    color: $prism-property-color;
 }
 
 .token.string {
-    color: $stringColor;
+    color: $prism-string-color;
 }
 
 .token.selector,
@@ -142,7 +142,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-    color: $selectorColor;
+    color: $prism-selector-color;
 }
 
 .token.operator,
@@ -150,24 +150,24 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-    color: $operatorColor;
-    background: $operatorBg;
+    color: $prism-operator-color;
+    background: $prism-operator-bg;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-    color: $keywordColor;
+    color: $prism-keyword-color;
 }
 
 .token.function {
-    color: $functionColor;
+    color: $prism-function-color;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-    color: $variableColor;
+    color: $prism-variable-color;
 }
 
 .token.important,
@@ -200,10 +200,10 @@ pre[class*="language-"] > code[class*="language-"] {
     left: 0;
     right: 0;
     padding: inherit 0;
-    margin-top: $paddingTop;
+    margin-top: $prism-padding-top;
 
-    background: $highlightBackground;
-    box-shadow: inset 5px 0 0 $highlightAccent;
+    background: $prism-highlight-background;
+    box-shadow: inset 5px 0 0 $prism-highlightAccent;
 
     z-index: 0;
 
