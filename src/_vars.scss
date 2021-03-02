@@ -7,21 +7,33 @@ $color-accent: var(--color-accent);
 
 $color-nodi: #fbd46d;
 $color-seiryu: #E55381;
-$color-hcui: #ffd369;
-$color-byakko: #845ec2;
-$color-tse: #3282b8;
-$color-bunbun: #bac964;
-$color-core: #bedcfa;
+$color-hcui: #FDC830;
+$color-byakko: #d82828;
+$color-tse: #309fe9;
+$color-bunbun: #38ef7d;
+$color-core: #9c76da;
 
 :root {
     --color-nodi-1: #{$color-nodi};
     --color-nodi-2: #b3933c;
 
     --color-byakko-1: #{$color-byakko};
-    --color-byakko-2: #4f2b8a;
+    --color-byakko-2: #991616;
 
-    --color-core-1: #9fb3f8;
-    --color-core-2: #578cc0;
+    --color-core-1: #{$color-core};
+    --color-core-2: #7041bb;
+
+    --color-hcui-1: #{$color-hcui};
+    --color-hcui-2: #F37335;
+
+    --color-bunbun-1: #{$color-bunbun};
+    --color-bunbun-2: #11998e;
+
+    --color-seiryu-1: #{$color-seiryu};
+    --color-seiryu-2: #bb345f;
+
+    --color-tse-1: #{$color-tse};
+    --color-tse-2: #3083bb;
 }
 
 $font-mono: 'Space Mono', Monaco, Consolas, monospace;

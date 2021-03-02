@@ -1,8 +1,8 @@
 <svg width="250" height="250" version="1.1" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <linearGradient id="seiryu_logo_a" x1="247.18" x2="247.18" y1="393.25" y2="98.87" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#A63C5D" offset="0"/>
-            <stop stop-color="#E55381" offset="1"/>
+            <stop stop-color="var(--color-seiryu-2)" offset="0"/>
+            <stop stop-color="var(--color-seiryu-1)" offset="1"/>
         </linearGradient>
     </defs>
     <path d="m318.35 100.26-304.61 142.45 171.04 122.22 145.11-68.452 18.168-8.5719-17.138-36.344-141.97 66.96-95.917-68.54 214.01-100.08 60.613 74.082c3.1459-16.176 7.6619-31.819 13.553-46.885zm45.027 211.18-66.939 31.939-18.131 8.6543 17.301 36.261 18.129-8.6464 56.071-26.756c-3.0929-13.194-5.2284-27.014-6.4314-41.453z" fill="url(#seiryu_logo_a)"/>

@@ -222,9 +222,14 @@ section {
     &.family {
         min-height: 100vh;
         max-height: none !important;
-        background-color: $color-bg-2;
-        @extend %scrolling-pattern;
+        background-color: $color-bg-1;
         padding: 20px 0;
+
+        .center {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
         @include for-mobile {
             height: auto;
@@ -236,9 +241,16 @@ section {
             font-size: 45px;
             font-weight: 100;
             margin-bottom: 20px;
+            width: 100%;
         }
 
         .item {
+            width: 45%;
+            border-radius: 20px;
+            @extend %scrolling-pattern;
+            padding: 10px;
+            text-align: center;
+
             &.project-- {
                 &seiryu {
                     --project-color: #{$color-seiryu};
@@ -265,6 +277,8 @@ section {
                 }
             }
 
+            --color-accent: var(--project-color);
+
             background-color: rgba(0, 0, 0, .1);
             position: relative;
             margin-bottom: 50px;
@@ -274,23 +288,11 @@ section {
                 flex-direction: row;
             }
 
-            &:after {
-                display: block;
-                content: '';
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                height: 1px;
-                width: 30%;
-                transition: width 2s;
-                background-color: var(--project-color);
-            }
-
             .logo {
                 padding: 20px 0;
 
                 svg {
-                    height: 200px;
+                    height: 250px;
                     transition: color .3s;
                     color: rgba($color-font-2, .5);
                 }
@@ -312,20 +314,27 @@ section {
                 padding: 20px 0;
 
                 h2 {
-                    font-size: 30px;
+                    font-size: 35px;
                     font-weight: 100;
+                    color: var(--project-color);
+
+                    .sub {
+                        display: block;
+                        font-size: 20px;
+                    }
                 }
 
-                p {
+                .desc {
                     display: block;
                     flex: 1;
-                    font-size: 16px;
+                    font-size: 20px;
                     letter-spacing: .8px;
-                    text-indent: 4ch;
+                    padding: 20px;
                 }
 
                 .bottom {
-                    text-align: right;
+                    text-align: center;
+                    padding: 20px;
                 }
             }
         }
