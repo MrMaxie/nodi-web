@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/MrMaxie/nodi-web/issues"
   },
-  "homepage": "https://github.com/MrMaxie/nodi-web#readme"
+  "homepage": "https://github.com/MrMaxie/nodi-web#readme",
+  "devDependencies": {
+    "cheerio": "1.0.0-rc.5"
+  }
 }

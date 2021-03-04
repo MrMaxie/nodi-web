@@ -4,6 +4,7 @@ import Path from 'path';
 import Ejs from 'ejs';
 import Lru from 'lru-cache';
 import Sass from 'node-sass';
+import Cheerio from 'cheerio';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-javascript';
@@ -23,6 +24,12 @@ const context = {
         const code = Prism.highlight(data, Prism.languages[ext], ext);
         return `<pre class="codeblock">${filename}<code class="language-${ext}">${code}</code></pre>`;
     },
+};
+
+const loadingFunc = () => {
+    window.addEventListener('load', () => {
+        document.body.removeAttribute('data-is-loading');
+    });
 };
 
 $.task('build', async () => {
@@ -45,12 +52,15 @@ $.task('build', async () => {
                     context,
                     root: `${__dirname}/src`,
                 });
+                const dom = Cheerio.load(html);
+                dom('body').attr('data-is-loading', 'true');
+                dom('head').append(`<script>(${loadingFunc})();</script>`);
                 resultFile = file
                     .replace('\\', '/')
                     .replace('.ejs', '.html')
                     .replace('/src/', '/build/');
                 await $.fs.createDir(Path.dirname(resultFile));
-                await $.fs.write(resultFile, html);
+                await $.fs.write(resultFile, dom.html());
                 break;
 
             case '.scss':

@@ -27,6 +27,66 @@
 }
 
 // ============================================================
+// Reusable
+// ============================================================
+
+a {
+    color: var(--color-accent);
+    transition: none;
+}
+
+select, a.button {
+    padding: 10px 15px;
+    color: currentColor;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-family: $font-sans-serif;
+    background-color: $color-bg-1;
+    appearance: none;
+    font-size: 14px;
+    transition: box-shadow .3s;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover, &:focus {
+        box-shadow: 0 0 0 2px var(--color-accent);
+        cursor: pointer;
+    }
+}
+
+.center {
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+    padding: 0 10px;
+
+    @include for-mobile {
+        max-width: 100%;
+    }
+}
+
+%scrolling-pattern {
+    $id: unique_id();
+    $animation-name: "animation-#{$id}";
+
+    background: url(#{to-base64('./assets/pattern.svg', 'image/svg+xml')}) repeat 0 0;
+    background-size: (40px * 3) (59.428px * 3);
+
+    @keyframes #{$animation-name} {
+        100% {
+            background-position: (40px * 3) (59.428px * 3);
+        }
+    }
+
+    animation: #{$animation-name} 5s infinite linear;
+}
+
+.f-accent {
+    color: var(--color-accent);
+}
+
+// ============================================================
 // Main
 // ============================================================
 
@@ -41,6 +101,10 @@ body {
     margin: 0;
     min-height: 100vh;
     font-size: 12px;
+
+    &[data-is-loading] * {
+        transition: none !important;
+    }
 }
 
 header {
@@ -220,63 +284,3 @@ footer {
         }
     }
 }
-
-// ============================================================
-// Reusable
-// ============================================================
-
-a {
-    color: var(--color-accent);
-}
-
-select, a.button {
-    padding: 10px 15px;
-    color: currentColor;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    font-family: $font-sans-serif;
-    background-color: $color-bg-1;
-    appearance: none;
-    font-size: 14px;
-    transition: box-shadow .3s;
-    text-decoration: none;
-    display: inline-block;
-
-    &:hover, &:focus {
-        box-shadow: 0 0 0 2px var(--color-accent);
-        cursor: pointer;
-    }
-}
-
-.center {
-    max-width: 1300px;
-    width: 100%;
-    margin: auto;
-    padding: 0 10px;
-
-    @include for-mobile {
-        max-width: 100%;
-    }
-}
-
-%scrolling-pattern {
-    $id: unique_id();
-    $animation-name: "animation-#{$id}";
-
-    background: url(#{to-base64('./assets/pattern.svg', 'image/svg+xml')}) repeat 0 0;
-    background-size: (40px * 3) (59.428px * 3);
-
-    @keyframes #{$animation-name} {
-        100% {
-            background-position: (40px * 3) (59.428px * 3);
-        }
-    }
-
-    animation: #{$animation-name} 5s infinite linear;
-}
-
-.f-accent {
-    color: var(--color-accent);
-}
-
