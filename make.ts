@@ -32,6 +32,11 @@ const loadingFunc = () => {
     });
 };
 
+/**
+ * HOTFIX because of types for EJS library has been prepared with wrong type for root directories option
+ */
+const rootDirectories = [`${__dirname}/src`, `${__dirname}/node_modules`] as unknown as string;
+
 $.task('build', async () => {
     const files = await $.fs.list('./src/**/*.*');
 
@@ -46,11 +51,25 @@ $.task('build', async () => {
         let resultFile: string;
 
         switch (ext) {
+            case '.ejsjs':
+                const ejsjs = await $.fs.read(file);
+                const js = Ejs.render(ejsjs, {}, {
+                    context,
+                    root: rootDirectories,
+                });
+                resultFile = file
+                    .replace('\\', '/')
+                    .replace('.ejsjs', '.js')
+                    .replace('/src/', '/build/');
+                await $.fs.createDir(Path.dirname(resultFile));
+                await $.fs.write(resultFile, js);
+                break;
+
             case '.ejs':
                 const ejs = await $.fs.read(file);
                 const html = Ejs.render(ejs, {}, {
                     context,
-                    root: `${__dirname}/src`,
+                    root: rootDirectories,
                 });
                 const dom = Cheerio.load(html);
                 dom('body').attr('data-is-loading', 'true');

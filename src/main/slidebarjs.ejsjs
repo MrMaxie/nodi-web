@@ -1,0 +1,1 @@
+<%- include('/sidebarjs/lib/umd/sidebarjs.js') %>

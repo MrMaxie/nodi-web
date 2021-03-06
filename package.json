@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/MrMaxie/nodi-web#readme",
   "devDependencies": {
-    "cheerio": "1.0.0-rc.5"
+    "cheerio": "1.0.0-rc.5",
+    "sidebarjs": "7.0.0"
   }
 }
