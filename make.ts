@@ -65,6 +65,20 @@ $.task('build', async () => {
                 await $.fs.write(resultFile, js);
                 break;
 
+            case '.ejscss':
+                const ejscss = await $.fs.read(file);
+                const css = Ejs.render(ejscss, {}, {
+                    context,
+                    root: rootDirectories,
+                });
+                resultFile = file
+                    .replace('\\', '/')
+                    .replace('.ejscss', '.css')
+                    .replace('/src/', '/build/');
+                await $.fs.createDir(Path.dirname(resultFile));
+                await $.fs.write(resultFile, css);
+                break;
+
             case '.ejs':
                 const ejs = await $.fs.read(file);
                 const html = Ejs.render(ejs, {}, {
