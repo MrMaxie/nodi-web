@@ -30,7 +30,7 @@ const generateSubtree = async (prefix: string) => {
     for (const filename of list) {
         const raw = await $.fs.read(filename);
         const meta = MdYaml(raw);
-        const content = Md(meta.content);
+        const content = ejsRender(Md(meta.content));
 
         subtree.push({
             filename,
@@ -134,12 +134,12 @@ $.task('build', async () => {
                     const subpages = await generateSubtree(subfilesPath);
 
                     for (const subpage of subpages) {
-                        const realHtml = ejsRender(ejs, {
+                        const html = ejsRender(ejs, {
                             generateSubpages: () => {},
                             subpage,
                             subpages,
                         });
-                        const dom = Cheerio.load(realHtml);
+                        const dom = Cheerio.load(html);
                         dom('body').attr('data-is-loading', 'true');
                         dom('head').append(`<script>(${loadingFunc})();</script>`);
                         resultFile = Path.normalize(Path.normalize(subpage.filename)

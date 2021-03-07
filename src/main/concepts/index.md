@@ -3,6 +3,8 @@ title: Home
 order: 0
 ---
 
+<div class="illus"><%- include('/assets/illus/undraw-solution-mindset.svg') %></div>
+
 # Prelude
 
 One of main differences between Nodi and other libaries is that, Nodi is highly **concept-based**. That means, concepts of things are more important in most cases than actual code. Why it's crucial for this project? Most of issues are made by human errors. We just can't avoid this in programming, because people prepare code - it's obvious.
@@ -11,7 +13,7 @@ So instead of fighting with people imperfections we can make our programming wor
 
 ## What are not the project goals?
 
-There are multiple things that this project will don't provide you and don't cover even in this documentation, but they are just useful for every project. Instead of forcing people to follow rules we prefer to encourage you to read the terms. Before starting work with Nodi, read about:
+There are multiple things that this project will don't provide you and don't cover even in this documentation, but they are just useful for every project. Instead of forcing people to follow rules we prefer to encourage you to read the terms. Before you will start work with Nodi, read about:
 
 - Linting
   - ESLint
@@ -21,7 +23,7 @@ There are multiple things that this project will don't provide you and don't cov
 
 ## TypeScript
 
-One of main things required to understand this project is knowing TypeScript. TypeScript is superset of ECMAScript (that means every ECMAScript file is correct TypeScript, but not every TypeScript file is correct ECMAScript) and is transcompiled to ECMAScript. This tool allows us to:
+One of main things required to understand this project is knowlage about TypeScript. TypeScript is superset of ECMAScript (that means every ECMAScript file is correct TypeScript, but not every TypeScript file is correct ECMAScript) and is transcompiled to ECMAScript. This tool allows us to:
 
 - standardize types syntax
 - get correct hints in IDEs

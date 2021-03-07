@@ -34,6 +34,10 @@ $color-core: #9c76da;
 
     --color-tse-1: #{$color-tse};
     --color-tse-2: #3083bb;
+
+    --color-illus-dark: #{darken($color-bg-2, 3%)}; // #3f3d56
+    --color-illus-dark-2: #{lighten($color-bg-2, 2%)}; // #2f2e41
+    --color-illus-bright: rgba(0, 0, 0, .5); // #f2f2f2
 }
 
 $font-mono: 'Space Mono', Monaco, Consolas, monospace;

@@ -179,6 +179,16 @@ select, a.button {
             letter-spacing: .5px;
             text-align: justify;
         }
+
+        .illus {
+            text-align: center;
+            padding: 10px 0;
+
+            svg {
+                max-width: 50%;
+                height: auto;
+            }
+        }
     }
 }
 
