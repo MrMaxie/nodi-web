@@ -15,15 +15,27 @@ const $ = new Bunbun();
 
 Ejs.cache = new Lru(150);
 
-const context = {
-    url: (name?: string) => `https://${name ? `${name}.` : ''}nodi.dev/`,
-    code: (path: string, filename?: string) => {
-        filename = filename ? `<div class="filename">${filename}</div>` : '';
-        const data = Fs.readFileSync(`${__dirname}/src/${path}`, 'utf-8');
-        const ext = Path.extname(path).replace('.', '');
-        const code = Prism.highlight(data, Prism.languages[ext], ext);
-        return `<pre class="codeblock">${filename}<code class="language-${ext}">${code}</code></pre>`;
-    },
+const ejsRender = (content: string, context: Partial<Ejs.Options> = {}) => {
+    return Ejs.render(content, {}, {
+        context: {
+            ...context,
+            url: (name?: string) => `https://${name ? `${name}.` : ''}nodi.dev/`,
+            code: (path: string, filename?: string) => {
+                filename = filename ? `<div class="filename">${filename}</div>` : '';
+                const data = Fs.readFileSync(`${__dirname}/src/${path}`, 'utf-8');
+                const ext = Path.extname(path).replace('.', '');
+                const code = Prism.highlight(data, Prism.languages[ext], ext);
+                return `<pre class="codeblock">${filename}<code class="language-${ext}">${code}</code></pre>`;
+            },
+        },
+
+        outputFunctionName: 'print',
+
+        /**
+         * HOTFIX because of types for EJS library has been prepared with wrong type for root directories option
+         */
+        root: [`${__dirname}/src`, `${__dirname}/node_modules`] as unknown as string,
+    });
 };
 
 const loadingFunc = () => {
@@ -31,11 +43,6 @@ const loadingFunc = () => {
         document.body.removeAttribute('data-is-loading');
     });
 };
-
-/**
- * HOTFIX because of types for EJS library has been prepared with wrong type for root directories option
- */
-const rootDirectories = [`${__dirname}/src`, `${__dirname}/node_modules`] as unknown as string;
 
 $.task('build', async () => {
     const files = await $.fs.list('./src/**/*.*');
@@ -53,10 +60,7 @@ $.task('build', async () => {
         switch (ext) {
             case '.ejsjs':
                 const ejsjs = await $.fs.read(file);
-                const js = Ejs.render(ejsjs, {}, {
-                    context,
-                    root: rootDirectories,
-                });
+                const js = ejsRender(ejsjs);
                 resultFile = file
                     .replace('\\', '/')
                     .replace('.ejsjs', '.js')
@@ -67,10 +71,7 @@ $.task('build', async () => {
 
             case '.ejscss':
                 const ejscss = await $.fs.read(file);
-                const css = Ejs.render(ejscss, {}, {
-                    context,
-                    root: rootDirectories,
-                });
+                const css = ejsRender(ejscss);
                 resultFile = file
                     .replace('\\', '/')
                     .replace('.ejscss', '.css')
@@ -81,10 +82,7 @@ $.task('build', async () => {
 
             case '.ejs':
                 const ejs = await $.fs.read(file);
-                const html = Ejs.render(ejs, {}, {
-                    context,
-                    root: rootDirectories,
-                });
+                const html = ejsRender(ejs);
                 const dom = Cheerio.load(html);
                 dom('body').attr('data-is-loading', 'true');
                 dom('head').append(`<script>(${loadingFunc})();</script>`);

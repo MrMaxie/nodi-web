@@ -1,0 +1,44 @@
+<div class="toc" style="height: 150vh">
+    <a href="/">test</a>
+    <a href="/">test2</a>
+    <a href="/">test3</a>
+</div>
+
+<div sidebarjs id="sidebar-toc">
+    <div class="sidebar-header" aria-role="button" tabindex="0" data-trigger="close-toc">
+        <%- include('/assets/icons/arrow-right.svg') %>
+        Close
+    </div>
+    <a href="/">test</a>
+    <a href="/">test2</a>
+    <a href="/">test3</a>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        const sb = new SidebarJS.SidebarElement({
+            component: document.getElementById('sidebar-toc'),
+            documentMinSwipeX: 10,
+            documentSwipeRange: 40,
+            nativeSwipe: true,
+            nativeSwipeOpen: true,
+            position: 'right',
+            backdropOpacity: 0.3,
+            responsive: false,
+        });
+
+        document.addEventListener('click', function(e) {
+            for (let target = e.target; target && target !== this; target = target.parentNode) {
+                if (target.matches('[data-trigger="open-toc"]')) {
+                    sb.open();
+                    break;
+                }
+
+                if (target.matches('[data-trigger="close-toc"]')) {
+                    sb.close();
+                    break;
+                }
+            }
+        }, false);
+    });
+</script>

@@ -86,6 +86,47 @@ select, a.button {
     color: var(--color-accent);
 }
 
+[sidebarjs] {
+    [sidebarjs-container] {
+        background-color: $color-bg-1;
+    }
+
+    .sidebar-header {
+        height: 60px;
+        line-height: 60px;
+        background-color: $color-bg-2;
+        padding: 10px 15px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        outline: none;
+        transition: color .3s;
+
+        &:focus {
+            color: var(--color-accent);
+        }
+
+        svg {
+            margin-right: 10px;
+        }
+    }
+
+    a {
+        font-weight: 200;
+        font-size: 20px;
+        padding: 10px 15px;
+        color: currentColor;
+        text-decoration: none;
+        border-bottom: 1px solid $color-bg-2;
+
+        &[data-active="true"] {
+            color: var(--color-accent);
+        }
+    }
+}
+
 // ============================================================
 // Main
 // ============================================================
@@ -103,12 +144,14 @@ body {
     font-size: 12px;
     padding-top: 60px;
 
-    @include for-mobile {
-        padding-top: 0;
-    }
+    &[data-is-loading] {
+        [sidebarjs] {
+            opacity: 0;
+        }
 
-    &[data-is-loading] * {
-        transition: none !important;
+        * {
+            transition: none !important;
+        }
     }
 }
 
@@ -120,8 +163,25 @@ header {
     background-color: $color-bg-2;
     z-index: 500;
 
-    @include for-mobile {
-        position: static;
+    .mobile-btn {
+        display: none;
+        padding: 0 10px;
+        outline: none;
+        height: 100%;
+        transition: color .3s;
+
+        @include for-mobile {
+            display: block;
+        }
+
+        &:focus {
+            color: var(--color-accent);
+        }
+
+        &[data-is-visible="false"] {
+            opacity: 0;
+            pointer-events: none;
+        }
     }
 
     .nav {
@@ -151,8 +211,6 @@ header {
             line-height: 60px;
 
             @include for-mobile {
-                width: 100vw;
-                flex: none;
                 text-align: center;
             }
         }
@@ -197,21 +255,7 @@ header {
             }
 
             @include for-mobile {
-                padding: 10px 15px;
-                color: currentColor;
-                border-radius: 5px;
-                border: none;
-                outline: none;
-                background-color: $color-bg-1;
-                appearance: none;
-                font-size: 14px;
-                transition: box-shadow .3s;
-                margin: 10px 15px;
-
-                &:hover, &:focus {
-                    box-shadow: 0 0 0 2px $color-accent;
-                    cursor: pointer;
-                }
+                display: none;
             }
         }
     }

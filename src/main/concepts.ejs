@@ -2,8 +2,12 @@
 this.project = 'nodi';
 this.projectName = 'Nodi';
 this.moduleName = '@nodi/nodi??';
-this.page = 'home';
-this.pageName = 'Home';
+this.page = 'concepts';
+this.pageName = 'Concepts';
+
+this.toc = [
+
+];
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,162 +19,8 @@ this.pageName = 'Home';
     <body data-page="index">
         <%- include('/_nav') %>
 
-        <section class="introduce">
-            <div class="banner">
-                <%- include(`/assets/${ this.project }.logo.svg`) %>
-                <h1><%- this.projectName %></h1>
-                <h2>
-                    About creating
-                    <span class="f-accent">fast</span>,
-                    <span class="f-accent">elegant</span> &
-                    <span class="f-accent">modern</span>
-                    apps
-                </h2>
-            </div>
-            <div class="center">
-                <div class="block">
-                    <h2>More than library</h2>
-                    <div class="icon">
-                        <%- include('/assets/icons/collage.svg') %>
-                    </div>
-                    <p class="desc">
-                        Nodi is not bundle of just libraries. It's powered by well documented concepts that allows for programmers write faster and better applications
-                    </p>
-                </div>
+        <%- include('/_toc') %>
 
-                <div class="block">
-                    <h2>Flexible</h2>
-                    <div class="icon">
-                        <%- include('/assets/icons/scissors.svg') %>
-                    </div>
-                    <p class="desc">
-                        Flexibility is one major rules of Nodi. We won't force anyone to use specific libraries. Instead of that code have to be opened in such way to allows for overriding default behavior
-                    </p>
-                </div>
-
-                <div class="block">
-                    <h2>Elegant</h2>
-                    <div class="icon">
-                        <%- include('/assets/icons/heart.svg') %>
-                    </div>
-                    <p class="desc">
-                        Readable code allows not only fix/change code faster, but also develop faster new features as well
-                    </p>
-                </div>
-
-                <div class="block">
-                    <h2>Cost meter</h2>
-                    <div class="icon">
-                        <%- include('/assets/icons/timer.svg') %>
-                    </div>
-                    <p class="desc">
-                        It's easy to keep eyes on your call costs to avoid more complex responses, from checking where people need to wait the most
-                    </p>
-                </div>
-
-                <div class="block">
-                    <h2>Magicless</h2>
-                    <div class="icon">
-                        <%- include('/assets/icons/magic.svg') %>
-                    </div>
-                    <p class="desc">
-                        This library doesn't contains any magic in itself, only few metaprogramming, well documented tricks. Thanks to that it's easier to keep DRY rule without additional learning
-                    </p>
-                </div>
-
-                <div class="block">
-                    <h2>Easy</h2>
-                    <div class="icon">
-                        <%- include('/assets/icons/person-open-arms.svg') %>
-                    </div>
-                    <p class="desc">
-                        Nodi does't contains any new syntaxes, any config files, any strict rules for directories structure, any strict rules for software  purpose
-                    </p>
-                </div>
-            </div>
-        </section>
-        <section class="family">
-            <div class="center">
-                <h1><span class="f-accent">Nodi</span>'s familiy libraries</h1>
-                <div class="item project--seiryu">
-                    <div class="logo">
-                        <%- include('/assets/seiryu.logo.svg') %>
-                    </div>
-                    <div class="info">
-                        <h2>Seiryu</h2>
-                        <div class="desc">Backend library</div>
-                        <div class="bottom">
-                            <a href="<%- this.url('seiryu') %>" class="button">Read more</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item project--byakko">
-                    <div class="logo">
-                        <%- include('/assets/byakko.logo.svg') %>
-                    </div>
-                    <div class="info">
-                        <h2>Byakko</h2>
-                        <div class="desc">Frontend library</div>
-                        <div class="bottom">
-                            <a href="<%- this.url('seiryu') %>" class="button">Read more</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item project--core">
-                    <div class="logo">
-                        <%- include('/assets/core.logo.svg') %>
-                    </div>
-                    <div class="info">
-                        <h2>Core</h2>
-                        <div class="desc">Toolkit</div>
-                        <div class="bottom">
-                            <a href="<%- this.url('core') %>" class="button">Read more</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item project--bunbun">
-                    <div class="logo">
-                        <%- include('/assets/bunbun.logo.svg') %>
-                    </div>
-                    <div class="info">
-                        <h2>Bunbun</h2>
-                        <div class="desc">Task manager</div>
-                        <div class="bottom">
-                            <a href="<%- this.url('bunbun') %>" class="button">Read more</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item project--hcui">
-                    <div class="logo">
-                        <%- include('/assets/hcui.logo.svg') %>
-                    </div>
-                    <div class="info">
-                        <h2>HCUI <span class="sub">(Honeycomb UI)</span></h2>
-                        <div class="desc">Extendable development UI</div>
-                        <div class="bottom">
-                            <a href="<%- this.url('hcui') %>" class="button">Read more</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item project--tse">
-                    <div class="logo">
-                        <%- include('/assets/tse.logo.svg') %>
-                    </div>
-                    <div class="info">
-                        <h2>TSE <span class="sub">(TypeScript Extractor)</span></h2>
-                        <div class="desc">Types extracting tool</div>
-                        <div class="bottom">
-                            <a href="<%- this.url('tse') %>" class="button">Read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <%- include('/_footer') %>
     </body>
 </html>
