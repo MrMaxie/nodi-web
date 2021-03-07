@@ -96,13 +96,15 @@ select, a.button {
         line-height: 60px;
         background-color: $color-bg-2;
         padding: 10px 15px;
-        font-size: 20px;
+        font-size: 18px;
+        font-weight: 200;
         display: flex;
         flex-direction: row;
         justify-content: left;
         align-items: center;
         outline: none;
         transition: color .3s;
+        text-transform: uppercase;
 
         &:focus {
             color: var(--color-accent);
@@ -115,7 +117,7 @@ select, a.button {
 
     a {
         font-weight: 200;
-        font-size: 20px;
+        font-size: 22px;
         padding: 10px 15px;
         color: currentColor;
         text-decoration: none;
@@ -123,6 +125,59 @@ select, a.button {
 
         &[data-active="true"] {
             color: var(--color-accent);
+        }
+    }
+}
+
+.content-page {
+
+    .center {
+        display: flex;
+        flex-direction: row;
+        min-height: 90vh;
+        padding: 15px 0;
+    }
+
+    &--toc {
+
+        .toc {
+            width: 300px;
+
+            @include for-mobile {
+                display: none;
+            }
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: currentColor;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: color .3s;
+            border-bottom: 1px solid $color-bg-2;
+
+            &[data-is-active="true"], &:hover, &:focus {
+                color: var(--color-accent);
+            }
+        }
+    }
+
+    &--content {
+        flex: 1;
+        padding: 10px 15px;
+        border-left: 1px solid $color-bg-2;
+        font-size: 15px;
+
+        @include for-mobile {
+            border-left: none;
+        }
+
+        p {
+            text-indent: 4ch;
+            letter-spacing: .5px;
+            text-align: justify;
         }
     }
 }

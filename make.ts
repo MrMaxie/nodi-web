@@ -6,6 +6,8 @@ import Lru from 'lru-cache';
 import Sass from 'node-sass';
 import Cheerio from 'cheerio';
 import Prism from 'prismjs';
+import MdYaml from 'markdown-yaml-metadata-parser';
+import Md from 'marked';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
@@ -15,7 +17,34 @@ const $ = new Bunbun();
 
 Ejs.cache = new Lru(150);
 
-const ejsRender = (content: string, context: Partial<Ejs.Options> = {}) => {
+const generateSubtree = async (prefix: string) => {
+    const subtree: Array<{
+        filename: string;
+        content: string;
+        path: string; // e.g concepts/home
+        title: string;
+        order: number;
+    }> = [];
+    const list = await $.fs.list(`./src/${prefix}/**/*.md`);
+
+    for (const filename of list) {
+        const raw = await $.fs.read(filename);
+        const meta = MdYaml(raw);
+        const content = Md(meta.content);
+
+        subtree.push({
+            filename,
+            content,
+            path: filename.replace(/^\.\/src\/([a-z]+)\//i, '').replace(/\.md$/i, ''),
+            title: meta.metadata.title || '?TITLE?',
+            order: meta.metadata.order || 9999,
+        });
+    }
+
+    return subtree.sort((a, b) => a.order - b.order);
+};
+
+const ejsRender = (content: string, context: Partial<Ejs.Data> = {}) => {
     return Ejs.render(content, {}, {
         context: {
             ...context,
@@ -58,6 +87,9 @@ $.task('build', async () => {
         let resultFile: string;
 
         switch (ext) {
+            case '.md':
+                break;
+
             case '.ejsjs':
                 const ejsjs = await $.fs.read(file);
                 const js = ejsRender(ejsjs);
@@ -81,17 +113,54 @@ $.task('build', async () => {
                 break;
 
             case '.ejs':
+                let subfilesPath: string | undefined;
+
+                const subfilesHandler = (path: string) => {
+                    subfilesPath = path;
+                };
+
                 const ejs = await $.fs.read(file);
-                const html = ejsRender(ejs);
-                const dom = Cheerio.load(html);
-                dom('body').attr('data-is-loading', 'true');
-                dom('head').append(`<script>(${loadingFunc})();</script>`);
-                resultFile = file
-                    .replace('\\', '/')
-                    .replace('.ejs', '.html')
-                    .replace('/src/', '/build/');
-                await $.fs.createDir(Path.dirname(resultFile));
-                await $.fs.write(resultFile, dom.html());
+                const html = ejsRender(ejs, {
+                    generateSubpages: subfilesHandler,
+                    subpage: {
+                        title: '',
+                        path: '',
+                        content: '',
+                    },
+                    subpages: [],
+                });
+
+                if (subfilesPath) {
+                    const subpages = await generateSubtree(subfilesPath);
+
+                    for (const subpage of subpages) {
+                        const realHtml = ejsRender(ejs, {
+                            generateSubpages: () => {},
+                            subpage,
+                            subpages,
+                        });
+                        const dom = Cheerio.load(realHtml);
+                        dom('body').attr('data-is-loading', 'true');
+                        dom('head').append(`<script>(${loadingFunc})();</script>`);
+                        resultFile = Path.normalize(Path.normalize(subpage.filename)
+                            .replace('\\', '/')
+                            .replace('.ejs', '.html')
+                            .replace('.md', '.html')
+                            .replace(/(^|[\\/])src([\\/])/i, '$1build$2'));
+                        await $.fs.createDir(Path.dirname(resultFile));
+                        await $.fs.write(resultFile, dom.html());
+                    }
+                } else {
+                    const dom = Cheerio.load(html);
+                    dom('body').attr('data-is-loading', 'true');
+                    dom('head').append(`<script>(${loadingFunc})();</script>`);
+                    resultFile = file
+                        .replace('\\', '/')
+                        .replace('.ejs', '.html')
+                        .replace('/src/', '/build/');
+                    await $.fs.createDir(Path.dirname(resultFile));
+                    await $.fs.write(resultFile, dom.html());
+                }
                 break;
 
             case '.scss':
@@ -129,14 +198,10 @@ $.task('build', async () => {
                 await $.fs.copy(file, resultFile);
                 break;
         }
-
-
     }
 });
 
 $.task('watch', async () => {
-    await $.run('build');
-
     $.fs.watch(`./src/**/*.*`, async () => {
         await $.run('build');
     });

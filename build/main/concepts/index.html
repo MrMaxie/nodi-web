@@ -9,7 +9,7 @@
 <link rel="icon" href="/favicon.ico">
 <script src="https://nodi.dev/slidebarjs.js"></script>
 <link href="https://nodi.dev/slidebarjs.css" rel="stylesheet">
-<link href="/index.css?t=1615075731926" rel="stylesheet">
+<link href="/index.css?t=1615123738194" rel="stylesheet">
         <meta name="description" content="Elegant, magicless and easy to learn backend library, based on NodeJS">
 <meta name="keywords" content="nodejs node.js backend nodi seiryu library npm">
         <title>Nodi | Concepts</title>
@@ -18,7 +18,7 @@
         document.body.removeAttribute('data-is-loading');
     });
 })();</script></head>
-    <body data-page="index" data-is-loading="true">
+    <body data-is-loading="true">
         <header>
     <div class="nav">
         <div class="center">
@@ -41,8 +41,7 @@
 
 <div sidebarjs="" id="sidebar-nav">
     <div class="sidebar-header" aria-role="button" tabindex="0" data-trigger="close-nav">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" fill="currentColor"></path></svg>
-        Close
+        Navigation
     </div>
     <a href="/" data-active="false">Home</a>
     <a href="https://nodi.dev/concepts">Concepts</a>
@@ -82,20 +81,22 @@
 </script>
 
 
-        <div class="toc" style="height: 150vh">
-    <a href="/">test</a>
-    <a href="/">test2</a>
-    <a href="/">test3</a>
+        <div class="content-page">
+            <div class="center">
+                <div class="content-page--toc">
+                    <div class="toc">
+    
+        <a href="https://nodi.dev/concepts/index" data-is-active="true">Home</a>
+    
 </div>
 
 <div sidebarjs="" id="sidebar-toc">
     <div class="sidebar-header" aria-role="button" tabindex="0" data-trigger="close-toc">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path></svg>
-        Close
+        Table of contents
     </div>
-    <a href="/">test</a>
-    <a href="/">test2</a>
-    <a href="/">test3</a>
+    
+        <a href="https://nodi.dev/concepts/index" data-is-active="true">Home</a>
+    
 </div>
 
 <script>
@@ -127,6 +128,36 @@
     });
 </script>
 
+                </div>
+
+                <div class="content-page--content">
+                    <h1 id="prelude">Prelude</h1>
+<p>One of main differences between Nodi and other libaries is that, Nodi is highly <strong>concept-based</strong>. That means, concepts of things are more important in most cases than actual code. Why it's crucial for this project? Most of issues are made by human errors. We just can't avoid this in programming, because people prepare code - it's obvious.</p>
+<p>So instead of fighting with people imperfections we can make our programming world smarter and less erroneous by itself. Thanks to making code more transparent, more readable and less magician we can prepare better, self-described code no matter what programmer will be working on that code.</p>
+<h2 id="what-are-not-the-project-goals">What are not the project goals?</h2>
+<p>There are multiple things that this project will don't provide you and don't cover even in this documentation, but they are just useful for every project. Instead of forcing people to follow rules we prefer to encourage you to read the terms. Before starting work with Nodi, read about:</p>
+<ul>
+<li>Linting<ul>
+<li>ESLint</li>
+<li>StyleLint</li>
+</ul>
+</li>
+<li>TypeScript</li>
+<li>Testing</li>
+</ul>
+<h2 id="typescript">TypeScript</h2>
+<p>One of main things required to understand this project is knowing TypeScript. TypeScript is superset of ECMAScript (that means every ECMAScript file is correct TypeScript, but not every TypeScript file is correct ECMAScript) and is transcompiled to ECMAScript. This tool allows us to:</p>
+<ul>
+<li>standardize types syntax</li>
+<li>get correct hints in IDEs</li>
+<li>get transcompilation errors if types are mismatched</li>
+</ul>
+<h2 id="discussion">Discussion</h2>
+<p>Project is fully open source and that also means that we listen to that what people say for us. We want to discuss about every topic and try to make this project better and better. If you are interested in the discussion, please visit the <strong>Issues</strong> section on our github.</p>
+
+                </div>
+            </div>
+        </div>
 
         <footer>
     <div class="center">

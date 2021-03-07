@@ -1,17 +1,22 @@
-<div class="toc" style="height: 150vh">
-    <a href="/">test</a>
-    <a href="/">test2</a>
-    <a href="/">test3</a>
+<div class="toc">
+    <% for(const subpage of this.subpages) { %>
+        <a
+            href="<%- this.url() %><%- subpage.path %>"
+            data-is-active="<%- subpage.path === this.subpage.path ? 'true' : 'false' %>"
+        ><%- subpage.title %></a>
+    <% } %>
 </div>
 
 <div sidebarjs id="sidebar-toc">
     <div class="sidebar-header" aria-role="button" tabindex="0" data-trigger="close-toc">
-        <%- include('/assets/icons/arrow-right.svg') %>
-        Close
+        Table of contents
     </div>
-    <a href="/">test</a>
-    <a href="/">test2</a>
-    <a href="/">test3</a>
+    <% for(const subpage of this.subpages) { %>
+        <a
+            href="<%- this.url() %><%- subpage.path %>"
+            data-is-active="<%- subpage.path === this.subpage.path ? 'true' : 'false' %>"
+        ><%- subpage.title %></a>
+    <% } %>
 </div>
 
 <script>

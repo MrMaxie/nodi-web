@@ -5,9 +5,9 @@ this.moduleName = '@nodi/nodi??';
 this.page = 'concepts';
 this.pageName = 'Concepts';
 
-this.toc = [
+this.generateSubpages('main/concepts');
 
-];
+this.toc = [];
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +16,20 @@ this.toc = [
         <%- include('/main/_head') %>
         <title><%- this.projectName %> | <%- this.pageName %></title>
     </head>
-    <body data-page="index">
+    <body>
         <%- include('/_nav') %>
 
-        <%- include('/_toc') %>
+        <div class="content-page">
+            <div class="center">
+                <div class="content-page--toc">
+                    <%- include('/_toc') %>
+                </div>
+
+                <div class="content-page--content">
+                    <%- this.subpage.content %>
+                </div>
+            </div>
+        </div>
 
         <%- include('/_footer') %>
     </body>
