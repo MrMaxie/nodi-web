@@ -16,14 +16,12 @@ So instead of fighting with people imperfections we can make our programming wor
 There are multiple things that this project will don't provide you and don't cover even in this documentation, but they are just useful for every project. Instead of forcing people to follow rules we prefer to encourage you to read the terms. Before you will start work with Nodi, read about:
 
 - Linting
-  - ESLint
-  - StyleLint
 - TypeScript
 - Testing
 
 ## TypeScript
 
-One of main things required to understand this project is knowlage about TypeScript. TypeScript is superset of ECMAScript (that means every ECMAScript file is correct TypeScript, but not every TypeScript file is correct ECMAScript) and is transcompiled to ECMAScript. This tool allows us to:
+One of main things required to understand this project is knowlage about TypeScript. TypeScript is superset of ECMAScript (that means every ECMAScript file is correct TypeScript, but not every TypeScript file is correct ECMAScript) and is transcompiled to ECMAScript (also JavaScript in our meaning). This tool allows us to:
 
 - standardize types syntax
 - get correct hints in IDEs
@@ -31,4 +29,6 @@ One of main things required to understand this project is knowlage about TypeScr
 
 ## Discussion
 
-Project is fully open source and that also means that we listen to that what people say for us. We want to discuss about every topic and try to make this project better and better. If you are interested in the discussion, please visit the **Issues** section on our github.
+Project is fully open source and that also means that we listen to that what people say for us. We want to discuss about every topic and try to make this project better and better. If you are interested in the discussion, please visit the **discussion** section on our github.
+
+<center><a class="button" href="https://github.com/MrMaxie/nodi-web/discussions">Open Nodi's discussion section</a></center>

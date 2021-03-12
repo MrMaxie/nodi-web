@@ -168,7 +168,8 @@ select, a.button {
         flex: 1;
         padding: 10px 15px;
         border-left: 1px solid $color-bg-2;
-        font-size: 15px;
+        font-size: 16px;
+        line-height: 1.5;
 
         @include for-mobile {
             border-left: none;
@@ -176,8 +177,25 @@ select, a.button {
 
         p {
             text-indent: 4ch;
-            letter-spacing: .5px;
+            letter-spacing: .03em;
             text-align: justify;
+            text-rendering: optimizelegibility !important;
+        }
+
+        blockquote {
+            background-color: $color-bg-3;
+            margin: 10px 0;
+            border-left: 5px solid $color-bg-2;
+            padding: 5px 20px;
+        }
+
+        em {
+            text-decoration: underline;
+        }
+
+        .button {
+            background-color: $color-bg-2;
+            font-size: inherit;
         }
 
         .illus {

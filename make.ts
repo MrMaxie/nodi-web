@@ -12,6 +12,7 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-json';
 
 const $ = new Bunbun();
 
@@ -41,7 +42,7 @@ const generateSubtree = async (prefix: string) => {
         });
     }
 
-    return subtree.sort((a, b) => a.order - b.order);
+    return subtree.sort((a, b) =>  b.order - a.order);
 };
 
 const ejsRender = (content: string, context: Partial<Ejs.Data> = {}) => {
@@ -142,6 +143,13 @@ $.task('build', async () => {
                         const dom = Cheerio.load(html);
                         dom('body').attr('data-is-loading', 'true');
                         dom('head').append(`<script>(${loadingFunc})();</script>`);
+                        dom('pre').addClass('codeblock');
+                        dom('code').each((i, el) => {
+                            const lang = /language\-(.*)/gi.exec(dom(el).attr('class'))[1];
+                            const sourceCode = dom(el).text().trim();
+                            const code = Prism.highlight(sourceCode, Prism.languages[lang], lang);
+                            dom(el).html(code);
+                        });
                         resultFile = Path.normalize(Path.normalize(subpage.filename)
                             .replace('\\', '/')
                             .replace('.ejs', '.html')
