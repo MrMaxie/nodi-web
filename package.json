@@ -35,9 +35,11 @@
   "homepage": "https://github.com/MrMaxie/nodi-web#readme",
   "devDependencies": {
     "@types/marked": "1.2.2",
+    "@types/uuid": "8.3.0",
     "cheerio": "1.0.0-rc.5",
     "markdown-yaml-metadata-parser": "3.0.0",
     "marked": "2.0.1",
-    "sidebarjs": "7.0.0"
+    "sidebarjs": "7.0.0",
+    "uuid": "3.4.0"
   }
 }

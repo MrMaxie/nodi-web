@@ -8,6 +8,7 @@ import Cheerio from 'cheerio';
 import Prism from 'prismjs';
 import MdYaml from 'markdown-yaml-metadata-parser';
 import Md from 'marked';
+import Uuidv5 from 'uuid/v5';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
@@ -189,6 +190,13 @@ $.task('build', async () => {
                             const base64 = Buffer.from(content).toString('base64');
                             return new Sass.types.String(`data:${$mime.getValue()};base64,${base64}`);
                         }),
+                        'uuid()': function() {
+                            const { entry, start } = this.options.result.stats;
+                            return new Sass.types.String(
+                                Uuidv5(`${entry}--${start}`, '55c2546d-f2f3-4e13-bc65-b23dfaeddffc')
+                                    .replace(/[^a-z0-9]/ig, '')
+                            );
+                        },
                     },
                 });
                 resultFile = file
