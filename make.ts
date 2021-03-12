@@ -190,10 +190,15 @@ $.task('build', async () => {
                             const base64 = Buffer.from(content).toString('base64');
                             return new Sass.types.String(`data:${$mime.getValue()};base64,${base64}`);
                         }),
-                        'uuid()': function() {
-                            const { entry, start } = this.options.result.stats;
+                        'uuid($key)': function($key: Sass.types.Value) {
+                            if (!($key instanceof Sass.types.String)) {
+                                throw '$url: Expected string.';
+                            }
+
+                            const { entry } = this.options.result.stats;
+
                             return new Sass.types.String(
-                                Uuidv5(`${entry}--${start}`, '55c2546d-f2f3-4e13-bc65-b23dfaeddffc')
+                                Uuidv5(`${entry}--${$key.getValue()}`, '55c2546d-f2f3-4e13-bc65-b23dfaeddffc')
                                     .replace(/[^a-z0-9]/ig, '')
                             );
                         },

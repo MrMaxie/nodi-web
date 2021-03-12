@@ -67,7 +67,7 @@ select, a.button {
 }
 
 %scrolling-pattern {
-    $id: uuid();
+    $id: uuid("scrolling-pattern");
     $animation-name: "animation-#{$id}";
 
     background: url(#{to-base64('./assets/pattern.svg', 'image/svg+xml')}) repeat 0 0;
