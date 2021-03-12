@@ -9,7 +9,7 @@
 <link rel="icon" href="/favicon.ico">
 <script src="https://nodi.dev/sidebarjs.js"></script>
 <link href="https://nodi.dev/sidebarjs.css" rel="stylesheet">
-<link href="/index.css?t=1615536037746" rel="stylesheet">
+<link href="/index.css?t=1615538337313" rel="stylesheet">
         <meta name="description" content="Elegant, magicless and easy to learn backend library, based on NodeJS">
 <meta name="keywords" content="nodejs node.js backend nodi seiryu library npm">
         <title>Nodi | Concepts</title>
@@ -142,7 +142,7 @@
 <blockquote>
 <p><em>Magic</em> in programming can be term for many things. For us <em>Magic code</em> means non-transparent code - code that create unforeseen result, hard to understand side-effect etc.</p>
 </blockquote>
-<p>Magic can do multiple things, and provie many features and side-effects. We need to consider types of such magic.</p>
+<p>Magic can do multiple things, provie many features and side-effects. We need to consider types of such magic.</p>
 <h2 id="1-side-effects">1. Side-effects</h2>
 <p>In this example we can see how side-effects can be destructive:</p>
 <pre class="codeblock"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">decorateAnchors</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -159,9 +159,9 @@
 <span class="token keyword">const</span> iterator <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token string">"//a[text()='Home']"</span><span class="token punctuation">,</span> document<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> XPathResult<span class="token punctuation">.</span><span class="token constant">ANY_TYPE</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> element <span class="token operator">=</span> iterator<span class="token punctuation">.</span><span class="token function">iterateNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// why null?!</span></code></pre>
-<p>But are they always bad? What can be named as "side-effect" and what cannot be? It's pretty hard to tell when something will become a side-effect, beacuse in practice every piece of code can change DOM or other global scope things. We can't avoid side-effects in that meaning, but making code more related allows us control such things. Consider such alternative:</p>
+<p>But are they always bad? What can be named as "side-effect" and what cannot be? It's pretty hard to tell when something will become a side-effect, beacuse in practice every piece of code can change DOM or other global scoped things. We cannot avoid side-effects in that meaning, but making code more related allows us control such things. Consider such alternative:</p>
 <pre class="codeblock"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">decorateAnchors</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">anchors<span class="token operator">:</span> HTMLElement<span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    <span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">el</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    anchors<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">el</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
         el<span class="token punctuation">.</span>innerText <span class="token operator">+=</span> <span class="token string">'?'</span><span class="token punctuation">;</span>
         el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -169,11 +169,11 @@
 
 <span class="token comment">// somewhere else</span>
 
-<span class="token keyword">const</span> anchor <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// get something</span>
+<span class="token keyword">const</span> anchor <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">decorateAnchors</span><span class="token punctuation">(</span><span class="token punctuation">[</span>anchor<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anchor<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// our anchor is safe :)</span></code></pre>
 <p>Relating things allows us make code safer.</p>
-<h2 id="2-non-obvious-result-of-settings">2. Non-obvious result of settings</h2>
+<h2 id="2-non-obvious-result">2. Non-obvious result</h2>
 <p>Let's consider such configuration file:</p>
 <pre class="codeblock"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"mode"</span><span class="token operator">:</span> <span class="token string">"development"</span><span class="token punctuation">,</span>
@@ -188,8 +188,42 @@
 <ul>
 <li>end-user applications settings</li>
 <li>closed source applications settings</li>
+<li>non language specific things</li>
 </ul>
-<p>All other programming things have to be programmable and possible typed, because it's only way to check source of thing and understand how they works and/or get syntax errors instead of weird effects of such configuration running.</p>
+<p>All other programming things have to be programmable and possible typed, because it's only way to check source of things and understand how they works and/or get syntax errors instead of weird, unexpected effects of such configuration running.</p>
+<h2 id="3-dynamic-code-parts">3. Dynamic code parts</h2>
+<p>Metaprogramming is powerful way to do awesome things. Avoiding this kind of code preparation makes code too much human-related for no reason. There are many things which can be done automatically.</p>
+<pre class="codeblock"><code class="language-tsx"><span class="token comment">// index.ts</span>
+
+<span class="token keyword">export</span> <span class="token punctuation">{</span> Name1 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./Name1.tsx'</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span> Name2 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./Name2.tsx'</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span> Namc3 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./Name3.tsx'</span><span class="token punctuation">;</span>
+<span class="token comment">// and so on</span></code></pre>
+<p>Why even people have to write such files? First of all - it can generate some error. Humans are not perfect, and for example typos can break things, like in 3rd export above. How can we describe such this file in other way?</p>
+<pre class="codeblock"><code class="language-tsx"><span class="token comment">// index.ts</span>
+
+<span class="token keyword">export</span> <span class="token punctuation">{</span> $<span class="token number">1</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./.*?/(.*?).tsx'</span><span class="token punctuation">;</span></code></pre>
+<p>Ok, so we have short version of code, but well, it's invalid file. How can valid file looks like?</p>
+<pre class="codeblock"><code class="language-tsx"><span class="token comment">// macros.ts</span>
+
+Macro<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token string">'glob-export'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">context<span class="token operator">:</span> MacroContext</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> dir <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span>filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">glob</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>dir<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/*.tsx</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">file</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> name <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">basename</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> <span class="token string">'.tsx'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">export { </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> } from './</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.tsx';\n</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// index.ts</span>
+
+<span class="token comment">//!macro-exec:glob-export()</span>
+    <span class="token comment">// this content will be erased and replaced with new result everytime</span>
+<span class="token comment">//!macro-end</span>
+
+<span class="token keyword">export</span> <span class="token punctuation">{</span> MySpecialExport <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./dir/file.tsx'</span><span class="token punctuation">;</span></code></pre>
+<p>Like you see we can avoid writting all the time the same code just by using meta-programming tools. Above code is obviously not real code, but only example.</p>
 
                 </div>
             </div>
