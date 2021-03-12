@@ -7,9 +7,9 @@
 
 RewriteEngine on
 
-RewriteCond %{REQUEST_URI} ^(.+)\.html?$ [NC]
-RewriteRule ^ %1 [L,R=302]
+RewriteCond %{THE_REQUEST} ^GET\ (.*)\.html\ HTTP
+RewriteRule (.*)\.html$ $1 [R=302]
 
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^ %{REQUEST_URI}.html [L]
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule (.*) $1\.html [L]
